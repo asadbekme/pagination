@@ -12,7 +12,7 @@ const App = () => {
   const getCountries = async () => {
     setLoading(true)
     const response = await axios.get('https://restcountries.com/v3.1/all')
-    console.log(response.data)
+    // console.log(response.data)
     setCountries(response.data)
     setLoading(false) 
   }
@@ -22,19 +22,20 @@ const App = () => {
   }, [])
 
   const lastCountryIndex = currentPage * countriesPerPage
-  const firtsCountryIndex = lastCountryIndex - countriesPerPage
-  const currentCountries = countries.slice(firtsCountryIndex, lastCountryIndex)
+  const firstCountryIndex = lastCountryIndex - countriesPerPage
+  const currentCountries = countries.slice(firstCountryIndex, lastCountryIndex)
 
   const paginate = (pageNumber) => {
+    // console.log(pageNumber)
     setCurrentPage(pageNumber)
-  }
-
-  const nextPage = () => {
-    setCurrentPage((prev) => prev + 1)
   }
 
   const prevPage = () => {
     setCurrentPage((prev) => prev - 1)
+  }
+
+  const nextPage = () => {
+    setCurrentPage((prev) => prev + 1)
   }
 
   return (
@@ -46,8 +47,8 @@ const App = () => {
         totalCountries={countries.length} 
         paginate={paginate}
       />
-      <button className="btn btn-primary" onClick={prevPage}>Prev Page</button>
-      <button className="btn btn-primary ms-2" onClick={nextPage}>Next Page</button>
+      <button className="btn btn-info" onClick={prevPage}>Prev Page</button>
+      <button className="btn btn-info ms-2" onClick={nextPage}>Next Page</button>
     </div>
   )
 }

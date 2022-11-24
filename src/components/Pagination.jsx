@@ -12,7 +12,7 @@ const Pagination = ({ currentPerPage, totalCountries, paginate }) => {
           pageNumbers.map((number) => (
             <li className="page-item" key={number}>
               <a 
-                href="#!" 
+                href="#" 
                 className="page-link"
                 onClick={() => paginate(number)}
               >
